@@ -1,0 +1,137 @@
+def main():
+    print("hello world")
+
+    #----------------------------PROBLEM 1-----------------------------------------
+    num_list = [2,3,1,6,7,43,12,8]
+
+    total = 0
+    for i in num_list:
+        total += 1
+
+    print(total)
+    total = 0
+    i = 0
+
+    while i > len(num_list):
+        total += num_list[i]
+        i +=1
+
+    print(total)
+    total = 0
+
+    #def sumList(i):
+
+     #   if (count < 1)
+    #    return print(total)
+
+
+   # sumList(num_list)
+
+    #-----------------PROBLEM 2-------------------------------------------------
+
+    def mergeLists(a,b):
+
+        newList = []
+        ac = a.copy()
+        bc = b.copy()
+        count = len(a) - len(b)
+        print("Count is:",count)
+
+        for x, k in zip(a, b):
+            newList.append(x)
+            newList.append(k)
+
+        if count > 0:
+            ac.reverse()
+            for l in a[:count]:
+                newList.append(l)
+
+        if count < 0:
+            bc.reverse()
+            for l in b[:count]:
+                newList.append(l)
+
+        print(newList)
+
+    list1 = ['a','b','c','d']
+    list2 = [1,2,3]
+    list3 = ['p','o','i','u','m']
+
+    mergeLists(list1,list2)
+    mergeLists(list2,list3)
+    mergeLists(list1,list3)
+
+    #-------------PROBLEM 3 ----------------------------
+    count = 1
+    i = 0
+    j = 1
+    fibList = [i,j]
+    print(fibList)
+
+
+
+    while count < 100:
+        tempSum = i + j
+        fibList.append(tempSum)
+
+        i = j
+        j = tempSum
+        count += 1
+
+    print(fibList)
+
+#------------------------PROBLEM 4---------------------------------------------
+    import re
+
+    def largestList(listofnums):
+        newList = []
+        for i in listofnums:
+            if i <10:
+                newList.append(i)
+            else:
+                r1 = int(i/10)
+                r2 = i%10
+                newList.append(r1)
+                newList.append(r2)
+
+        newList.sort(reverse=True)
+        newList = str(newList).strip('[]').replace(',','').replace(' ','')
+        newList = int(newList)
+        #listnum = str(listofnums)
+        print("The listnum is:",newList)
+
+    sample = [50,2,1,9]
+    largestList(sample)
+
+
+#--------------------------PROBLEM 5-------------------------------------
+
+    def alwaysHundred(numbers):
+
+        sumofnum = 0
+        while sumofnum != 100:
+            diff = sumofnum - 100
+            if diff < 0:
+                if diff in numbers:
+                    sumofnum += numbers[numbers.index(diff)]
+                else:
+                    closest = min(numbers, key=lambda x:abs(x-diff))
+                    sumofnum += closest
+            elif diff > 0:
+                if diff in numbers:
+                    sumofnum -= numbers[numbers.index(diff)]
+                else:
+                    closest = min(numbers, key=lambda x: abs(x - diff))
+                    sumofnum -= closest
+
+        print(sumofnum)
+
+    exampleList = [1,2,34,5,67,8,9]
+    alwaysHundred(exampleList)
+
+
+
+
+
+if __name__ == '__main__':
+    main()
