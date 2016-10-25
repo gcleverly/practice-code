@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92796384-1191-4708-bc22-e853f42d3fdc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scraping.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/athletes-kNN" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/twitter-sentiment.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wordnikapi.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Practice.iws" />
@@ -35,13 +36,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scraping.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scraping.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scraping.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="227">
               <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
               <folding>
                 <element signature="e#180#195#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wordnikapi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wordnikapi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="67" selection-start-line="0" selection-start-column="67" selection-end-line="0" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="twitter-sentiment.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/twitter-sentiment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="athletes-kNN" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/athletes-kNN">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2040">
+              <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+              <folding>
+                <element signature="e#127#138#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,6 +91,9 @@
         <option value="$PROJECT_DIR$/hello_world" />
         <option value="$PROJECT_DIR$/../learnPython/ex42.py" />
         <option value="$PROJECT_DIR$/scraping.py" />
+        <option value="$PROJECT_DIR$/wordnikapi.py" />
+        <option value="$PROJECT_DIR$/athletes-kNN" />
+        <option value="$PROJECT_DIR$/twitter-sentiment.py" />
       </list>
     </option>
   </component>
@@ -383,6 +419,32 @@
           <folding>
             <element signature="e#180#195#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordnikapi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="67" selection-start-line="0" selection-start-column="67" selection-end-line="0" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/athletes-kNN">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding>
+            <element signature="e#127#138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twitter-sentiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

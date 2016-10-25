@@ -1,0 +1,136 @@
+# Creating ML techniques to predict what sport an Olympic athlete would compete in based on their age, height, weight,
+# etc.
+
+import math
+import csv
+from collections import Counter
+
+
+def load_athlete_data(filename):
+    f = open(filename)
+    csvreader = csv.reader(f)
+    age = ''
+    next(csvreader, None)
+    athlete_data = []
+
+    for rows in csvreader:
+        athlete_dict = {}
+
+        if rows[2] != '' and rows[3] != '' and rows[4] != '':
+            athlete_dict['name'] = rows[0]
+            athlete_dict['sport'] = rows[1]
+            age = rows[2]
+            athlete_dict['age'] = int(age)
+            athlete_dict['height'] = int(rows[3])
+            athlete_dict['weight'] = int(rows[4])
+            athlete_data.append(athlete_dict)
+
+    newList = []
+
+    for a in athlete_data:
+        if 'height' not in a:
+            newList.append(a)
+
+    assert (type(filename) is str)
+
+    return athlete_data
+
+
+def dist(x, y):
+    assert (len(x) == len(y))
+
+    distances = []
+    total = 0
+    i = 0
+
+    for k in x:
+        total += pow(abs(x[i] - y[i]), 2)
+        i += 1
+
+    distance = math.sqrt(total)
+
+    return distance
+
+
+def nearest_athletes(athlete, athletes, k=1):
+    """
+    Returns the 'k' 'athletes' closest to 'athlete'.
+    Sorts the athletes based on distance to 'point', then return the closest 'k' athletes.
+    """
+
+    athlete_num = [athlete['age'], athlete['height'], athlete['weight']]
+
+    newlist = sorted(athletes, key=lambda l: dist(athlete_num, [l['age'], l['height'], l['weight']]))
+
+    assert (type(athletes) is list)
+
+    return newlist
+
+
+def most_common_sport(athletes):
+    """
+    Returns a string of the most frequently occuring sport in the list of
+        'athletes' passed in. If there is a tie, return one of the tied sports.
+    """
+    list_of_sports = []
+
+    [list_of_sports.append(a['sport']) for a in athletes]
+
+    c = Counter(list_of_sports)
+
+    return c.most_common(1)
+
+
+def knn_classifier(test_athlete, athletes, k=1):
+    """ Given a test athlete and a list of all athletes, returns the
+        most common sport of the top k."""
+    topk_athletes = nearest_athletes(test_athlete, athletes, k)
+
+    return most_common_sport(topk_athletes)
+
+
+def cross_validate(athletes, k=20):
+    """
+    Uses each athlete as a test point. Finds that athlete's nearest neighbors,
+    then sees if the predicted k-NN sport matches the athlete's actual sport.
+    This is an objective measure of classifier performance.
+
+    """
+
+    num_correct = 0
+    num_incorrect = 0
+    latest_accuracy = 0.0
+
+    for index, test_athlete in enumerate(athletes):
+
+        target = knn_classifier(test_athlete, athletes, k)
+
+        if target[0][0] == test_athlete['sport']:
+            num_correct += 1
+        else:
+            num_incorrect += 1
+
+        latest_accuracy = num_correct / (num_correct + num_incorrect)
+
+        # Display progress so far every 500 athletes
+        if index % 500 == 0:
+            print("{} of {}, accuracy so far={}".format(
+                index, len(athletes), latest_accuracy))
+
+        index += 1
+
+    return latest_accuracy
+
+
+ATHLETES_FILE = '../datasets/athletes.csv'
+athletes = load_athlete_data(ATHLETES_FILE)
+list1 = nearest_athletes(athletes[0], athletes)
+test_athletes = [{'sport': 'Cycling'}, {'sport': 'Gymnastics'}, {'sport': 'Cycling'}]
+most_common_sport(test_athletes)
+
+test_athlete = athletes[0]
+
+athletes = load_athlete_data(ATHLETES_FILE)
+knn_classifier(test_athlete, athletes)
+athletes = load_athlete_data(ATHLETES_FILE)
+cross_validate(athletes, k=20)
