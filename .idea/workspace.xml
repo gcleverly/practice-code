@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92796384-1191-4708-bc22-e853f42d3fdc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/athletes-kNN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/twitter-sentiment.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wordnikapi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="92796384-1191-4708-bc22-e853f42d3fdc" name="Default" comment="" />
     <ignored path="Practice.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -335,7 +330,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="27" width="1237" height="725" extended-state="0" />
+    <frame x="43" y="27" width="1237" height="725" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22635408" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
