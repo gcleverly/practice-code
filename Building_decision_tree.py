@@ -24,26 +24,18 @@ income_split = find_best_column(income,"high_income",columns)
 
 ## 5. Creating a simple recursive algorithm ##
 
-# We'll use lists to store our labels for nodes (when we find them).
-# Lists can be accessed inside our recursive function, whereas integers can't.  
-# Look at the python missions on scoping for more information on this.
 label_1s = []
 label_0s = []
 
 def id3(data, target, columns):
-    # The pandas.unique method will return a list of all the unique values in a Series.
     unique_targets = pandas.unique(data[target])
     
     if len(unique_targets) == 1:
-        # Insert code here to append 1 to label_1s or 0 to label_0s based on what we should label the node.
-        # See lines 2 and 3 in the algorithm.
         if unique_targets == 1:
             label_1s.append(1)
         elif unique_targets == 0:
             label_0s.append(0)
         
-        # Returning here is critical -- if we don't, the recursive tree will never finish, and run forever.
-        # See our example above for when we returned.
         return
     
     # Find the best column to split on in our data.
@@ -57,10 +49,8 @@ def id3(data, target, columns):
     
     # Loop through the splits and call id3 recursively.
     for split in [left_split, right_split]:
-        # Call id3 recursively to process each branch.
         id3(split, target, columns)
     
-# Create the dataset that we used in the example in the last screen.
 data = pandas.DataFrame([
     [0,20,0],
     [0,60,2],
@@ -69,18 +59,17 @@ data = pandas.DataFrame([
     [1,35,2],
     [1,55,1]
     ])
-# Assign column names to the data.
+
 data.columns = ["high_income", "age", "marital_status"]
 
-# Call the function on our data to set the counters properly.
 id3(data, "high_income", ["age", "marital_status"])
 
 ## 6. Storing the tree ##
 
-# Create a dictionary to hold the tree.  This has to be outside the function so we can access it later.
+# Create a dictionary to hold the tree.  
 tree = {}
 
-# This list will let us number the nodes.  It has to be a list so we can access it inside the function.
+# This list will let us number the nodes.
 nodes = []
 
 def id3(data, target, columns, tree):
@@ -95,13 +84,12 @@ def id3(data, target, columns, tree):
             tree["label"] = 1
         elif 0 in unique_targets:
             tree["label"] = 0
-        # Insert code here to assign the "label" field to the node dictionary.
+
         return
     
     best_column = find_best_column(data, target, columns)
     column_median = data[best_column].median()
     
-    # Insert code here to assign the "column" and "median" fields to the node dictionary.
     tree["column"] = best_column
     tree["median"] = column_median
     
@@ -113,15 +101,12 @@ def id3(data, target, columns, tree):
         tree[name] = {}
         id3(split, target, columns, tree[name])
 
-# Call the function on our data to set the counters properly.
 id3(data, "high_income", ["age", "marital_status"], tree)
 
 ## 7. A prettier tree ##
 
 def print_with_depth(string, depth):
-    # Add space before a string.
     prefix = "    " * depth
-    # Print a string, appropriately indented.
     print("{0}{1}".format(prefix, string))
     
     
@@ -130,7 +115,6 @@ def print_node(tree, depth):
     if "label" in tree:
         # If there's a label, then this is a leaf, so print it and return.
         print_with_depth("Leaf: Label {0}".format(tree["label"]), depth)
-        # This is critical -- without it, you'll get infinite recursion.
         return
     # Print information about what the node is splitting on.
     print_with_depth("{0} > {1}".format(tree["column"], tree["median"]), depth)
@@ -138,8 +122,6 @@ def print_node(tree, depth):
     # Create a list of tree branches.
     branches = [tree["left"], tree["right"]]
         
-    # Insert code here to recursively call print_node on each branch.
-    # Don't forget to increment depth when you pass it in!
     for i in branches:
         print_node(i,depth)
     
@@ -161,10 +143,6 @@ def predict(tree, row):
         return tree['left']
     if row[column] > median:
         return tree['right']
-    # Insert code here to check if row[column] is less than or equal to median
-    # If it's less than or equal, return the result of predicting on the left branch of the tree
-    # If it's greater, return the result of predicting on the right branch of the tree
-    # Remember to use the return statement to return the result!
 
 # Print the prediction for the first row in our data.
 print(predict(tree, data.iloc[0]))
