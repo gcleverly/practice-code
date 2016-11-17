@@ -28,8 +28,7 @@ public_incomes = income[income['workclass'] != 4]
 ## 8. Entropy ##
 
 import math
-# We'll do the same calculation we did above, but in Python.
-# Passing 2 as the second parameter to math.log will take a base 2 log.
+
 entropy = -(2/5 * math.log(2/5, 2) + 3/5 * math.log(3/5, 2))
 print(entropy)
 
